@@ -3,26 +3,24 @@
 //include __DIR__.'/Game.php';
 require_once(__DIR__.'/Game.php');
 
-$notAWinner;
+class GameRunner
+{
+    public function run()
+    {
+        $aGame = new Game();
 
-  $aGame = new Game();
-  
-  $aGame->add("Chet");
-  $aGame->add("Pat");
-  $aGame->add("Sue");
-  
-  
-  do {
-    
-    $aGame->roll(rand(0,5) + 1);
-    
-    if (rand(0,9) == 7) {
-      $notAWinner = $aGame->wrongAnswer();
-    } else {
-      $notAWinner = $aGame->wasCorrectlyAnswered();
+        $aGame->add("Chet");
+        $aGame->add("Pat");
+        $aGame->add("Sue");
+
+        do {
+            $aGame->roll(rand(0, 5) + 1);
+
+            if (rand(0, 9) == 7) {
+                $notAWinner = $aGame->wrongAnswer();
+            } else {
+                $notAWinner = $aGame->wasCorrectlyAnswered();
+            }
+        } while ($notAWinner);
     }
-    
-    
-    
-  } while ($notAWinner);
-  
+}
