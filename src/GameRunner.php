@@ -1,26 +1,37 @@
 <?php
 
-//include __DIR__.'/Game.php';
-require_once(__DIR__.'/Game.php');
-
 class GameRunner
 {
-    public function run()
-    {
-        $aGame = new Game();
+    /**
+     * @var Game
+     */
+    private $game;
 
-        $aGame->add("Chet");
-        $aGame->add("Pat");
-        $aGame->add("Sue");
+    /**
+     * GameRunner constructor.
+     * @param Game $game
+     */
+    public function __construct(Game $game)
+    {
+        $this->game = $game;
+    }
+
+    public function run($random)
+    {
+        $this->game->add("Chet");
+        $this->game->add("Pat");
+        $this->game->add("Sue");
 
         do {
-            $aGame->roll(rand(0, 5) + 1);
+            $this->game->roll($random);
 
             if (rand(0, 9) == 7) {
-                $notAWinner = $aGame->wrongAnswer();
+                $notAWinner = $this->game->wrongAnswer();
             } else {
-                $notAWinner = $aGame->wasCorrectlyAnswered();
+                $notAWinner = $this->game->wasCorrectlyAnswered();
             }
         } while ($notAWinner);
     }
 }
+
+
