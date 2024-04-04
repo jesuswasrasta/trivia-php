@@ -6,6 +6,7 @@
         <cache>
           <versions>
             <info id="Local" version="8.0.4" />
+            <info id="LocalD:\Source\Github\jesuswasrasta\trivia-php-old\vendor\autoload.php" version="11.0.9" />
           </versions>
         </cache>
       </tool>
